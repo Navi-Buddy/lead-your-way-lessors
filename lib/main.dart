@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/auth/widgets/auth_wall.dart';
+import 'package:lyw_lessors/configuration/constants/environment.dart';
 
-void main() {
+void main() async {
+  await Environment.initEnvironment();
   runApp(const MyApp());
 }
 
@@ -21,4 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

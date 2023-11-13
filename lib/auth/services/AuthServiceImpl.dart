@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:lyw_lessors/auth/domain/models/LoginResponse.dart';
 import 'package:lyw_lessors/auth/domain/services/AuthService.dart';
+import 'package:lyw_lessors/configuration/constants/environment.dart';
 
 class AuthServiceImpl extends AuthService {
-  static String baseUrl = "http://192.168.1.145:8090/";
-
   final dio = Dio(
     BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: Environment.apiUrl,
     ),
   );
 
