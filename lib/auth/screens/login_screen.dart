@@ -26,7 +26,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final LocalStorageService localStorageService = LocalStorageServiceImpl();
 
   void onSubmit(LoginFormData data) async {
-    LoginResponse? response = await authService.login(data.email, data.password);
+    sendNotifyMessage(context, 'starting login');
+    LoginResponse? response =
+        await authService.login(data.email, data.password);
 
     if (!context.mounted) return;
 
@@ -35,7 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    localStorageService.persist(ValidateTokenMiddleware.tokenKeyName, response.token);
+    localStorageService.persist(
+        ValidateTokenMiddleware.tokenKeyName, response.token);
 
     smoothTransition(
       context,

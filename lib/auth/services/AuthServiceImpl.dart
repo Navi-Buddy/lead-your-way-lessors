@@ -3,7 +3,7 @@ import 'package:lyw_lessors/auth/domain/models/LoginResponse.dart';
 import 'package:lyw_lessors/auth/domain/services/AuthService.dart';
 
 class AuthServiceImpl extends AuthService {
-  static String baseUrl = "http://127.0.0.1:8080/";
+  static String baseUrl = "http://192.168.1.145:8090/";
 
   final dio = Dio(
     BaseOptions(
@@ -14,19 +14,12 @@ class AuthServiceImpl extends AuthService {
   @override
   Future<LoginResponse?> login(String email, String password) async {
     try {
-      final response = await dio.post(
-          '/api/cyclescape/v1/auth/login',
-          data: {
-            'userEmail': email,
-            'userPassword': password
-          }
-      );
+      final response = await dio.post('api/cyclescape/v1/auth/login',
+          data: {'userEmail': email, 'userPassword': password});
       final userResponse = LoginResponse.fromJson(response.data);
       return userResponse;
-    }
-    catch (e) {
+    } catch (e) {
       return null;
     }
   }
-
 }
