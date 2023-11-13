@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lyw_lessors/auth/domain/models/LoginFormData.dart';
 import 'package:lyw_lessors/auth/domain/models/LoginResponse.dart';
 import 'package:lyw_lessors/auth/domain/services/AuthService.dart';
@@ -7,7 +6,6 @@ import 'package:lyw_lessors/auth/middlewares/validate_token_middleware.dart';
 import 'package:lyw_lessors/auth/screens/sign_up_screen.dart';
 import 'package:lyw_lessors/auth/services/AuthServiceImpl.dart';
 import 'package:lyw_lessors/auth/widgets/login_form.dart';
-import 'package:lyw_lessors/configuration/constants/environment.dart';
 import 'package:lyw_lessors/navigation/widgets/app_navigator.dart';
 import 'package:lyw_lessors/shared/domain/services/local_storage_service.dart';
 import 'package:lyw_lessors/shared/services/local_storage_service_impl.dart';
@@ -26,19 +24,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final LocalStorageService localStorageService = LocalStorageServiceImpl();
 
   void onSubmit(LoginFormData data) async {
-    sendNotifyMessage(context, 'starting login');
-    LoginResponse? response =
-        await authService.login(data.email, data.password);
+    sendNotifyMessage(context, 'Validating credentials.');
+    LoginResponse? response = await authService.login(data.email, data.password);
 
     if (!context.mounted) return;
 
     if (response == null) {
-      sendNotifyMessage(context, "Wrong credential. Please try again.");
+      sendNotifyMessage(context, "Wrong credentials. Please try again.");
       return;
     }
 
-    localStorageService.persist(
-        ValidateTokenMiddleware.tokenKeyName, response.token);
+    localStorageService.persist(ValidateTokenMiddleware.tokenKeyName, response.token);
 
     smoothTransition(
       context,
