@@ -11,11 +11,14 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
     AppRoute destination = AppRoute.notFound;
 
     switch (index) {
-      // TODO: MISSING IMPLEMENTATION
-      // case 0: destination = AppRoute.home;
-      // case 1: destination = AppRoute.characterSearch;
-      // case 2: destination = AppRoute.favoriteCharacters;
-      default: destination = AppRoute.notFound;
+      case 0:
+        destination = AppRoute.home;
+      case 1:
+        destination = AppRoute.characterSearch;
+      case 2:
+        destination = AppRoute.favoriteCharacters;
+      default:
+        destination = AppRoute.notFound;
     }
 
     navigateTo(destination);
@@ -26,31 +29,30 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
     return Container(
       color: Colors.orangeAccent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: GNav(
-          gap: 8,
-          padding: const EdgeInsets.all(16),
-          backgroundColor: Colors.orangeAccent,
-          tabBackgroundColor: Colors.black12,
-          activeColor: Colors.white,
-          color: Colors.brown,
-          onTabChange: handleTabChange,
-          tabs: const [
-            GButton(
-              icon: Icons.directions_bike_outlined,
-              text: "My bikes",
-            ),
-            GButton(
-              icon: Icons.add,
-              text: "Add a bike",
-            ),
-            GButton(
-              icon: Icons.account_circle,
-              text: "Profile"
-            )
-          ],
-        )
-      ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: GNav(
+            gap: 8,
+            padding: const EdgeInsets.all(16),
+            backgroundColor: Colors.orangeAccent,
+            tabBackgroundColor: Colors.black12,
+            activeColor: Colors.white,
+            color: Colors.brown,
+            onTabChange: ((value) {
+              print(value);
+              handleTabChange(value);
+            }),
+            tabs: const [
+              GButton(
+                icon: Icons.directions_bike_outlined,
+                text: "My bikes",
+              ),
+              GButton(
+                icon: Icons.add,
+                text: "Add a bike",
+              ),
+              GButton(icon: Icons.account_circle, text: "Profile")
+            ],
+          )),
     );
   }
 }

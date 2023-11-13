@@ -1,6 +1,8 @@
-
 enum AppRoute {
   login,
   register,
-  notFound
+  notFound,
+  home,
+  characterSearch,
+  favoriteCharacters
 }

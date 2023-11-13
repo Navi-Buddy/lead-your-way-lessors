@@ -15,7 +15,19 @@ class _AppNavigatorState extends State<AppNavigator> {
 
   void navigateTo(AppRoute route) {
     setState(() {
-      // TODO: MISSING IMPLEMENTATION
+      switch (route) {
+        case AppRoute.home:
+          view = const RouteNotFoundScreen();
+          break;
+        case AppRoute.characterSearch:
+          view = const RouteNotFoundScreen();
+          break;
+        case AppRoute.favoriteCharacters:
+          view = const RouteNotFoundScreen();
+          break;
+        default:
+          view = const RouteNotFoundScreen();
+      }
     });
   }
 
