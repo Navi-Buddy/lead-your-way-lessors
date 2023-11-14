@@ -4,5 +4,6 @@ enum AppRoute {
   notFound,
   home,
   characterSearch,
-  favoriteCharacters
+  favoriteCharacters,
+  profile,
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/navigation/domain/models/enumeration/app_route.dart';
 import 'package:lyw_lessors/navigation/widgets/enhanced_bottom_navigation_bar.dart';
+import 'package:lyw_lessors/profile/screen/profile_screen.dart';
 import 'package:lyw_lessors/public/screens/route_not_found_screen.dart';
 
 class AppNavigator extends StatefulWidget {
@@ -22,8 +23,8 @@ class _AppNavigatorState extends State<AppNavigator> {
         case AppRoute.characterSearch:
           view = const RouteNotFoundScreen();
           break;
-        case AppRoute.favoriteCharacters:
-          view = const RouteNotFoundScreen();
+        case AppRoute.profile:
+          view = const ProfileScreen();
           break;
         default:
           view = const RouteNotFoundScreen();
