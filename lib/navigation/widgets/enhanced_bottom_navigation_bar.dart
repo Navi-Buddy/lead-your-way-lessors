@@ -16,7 +16,7 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
       case 1:
         destination = AppRoute.characterSearch;
       case 2:
-        destination = AppRoute.favoriteCharacters;
+        destination = AppRoute.profile;
       default:
         destination = AppRoute.notFound;
     }
@@ -38,19 +38,21 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
             activeColor: Colors.white,
             color: Colors.brown,
             onTabChange: ((value) {
-              print(value);
               handleTabChange(value);
             }),
             tabs: const [
               GButton(
                 icon: Icons.directions_bike_outlined,
-                text: "My bikes",
+                text: "Find bikes",
               ),
               GButton(
                 icon: Icons.add,
                 text: "Add a bike",
               ),
-              GButton(icon: Icons.account_circle, text: "Profile")
+              GButton(
+                icon: Icons.account_circle,
+                text: "Profile",
+              )
             ],
           )),
     );
