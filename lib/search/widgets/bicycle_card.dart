@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/search/widgets/hero_image.dart';
 
 class BicycleCard extends StatelessWidget {
   const BicycleCard({
@@ -14,20 +15,15 @@ class BicycleCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Card(
+        color: Colors.white,
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
-              child: Hero(
-                tag: bike.id,
-                child: FadeInImage(
-                  image: NetworkImage(bike.imageData!),
-                  placeholder: const AssetImage('assets/loading_image.gif'),
-                ),
-              ),
+              child: HeroImage(bike: bike),
             ),
             Text(
-              bike.bicycleName!,
+              bike.bicycleName,
               style: const TextStyle(
                 fontSize: 16,
                 overflow: TextOverflow.ellipsis,

@@ -6,8 +6,8 @@ class Bicycle {
   final String bicycleSize;
   final String bicycleModel;
   final String imageData;
-  final double latitudeData;
-  final double longitudeData;
+  final double latitude;
+  final double longitude;
   final int userId;
 
   Bicycle({
@@ -18,8 +18,8 @@ class Bicycle {
     required this.bicycleSize,
     required this.bicycleModel,
     required this.imageData,
-    required this.latitudeData,
-    required this.longitudeData,
+    required this.latitude,
+    required this.longitude,
     required this.userId,
   });
 
@@ -31,8 +31,8 @@ class Bicycle {
         bicycleSize: json["bicycleSize"],
         bicycleModel: json["bicycleModel"],
         imageData: json["imageData"],
-        latitudeData: json["latitudeData"],
-        longitudeData: json["longitudeData"],
+        latitude: json["latitude"],
+        longitude: json["longitude"],
         userId: json["user"]["id"],
       );
 
@@ -44,8 +44,8 @@ class Bicycle {
         bicycleSize: map['bicycleSize'],
         bicycleModel: map['bicycleModel'],
         imageData: map['imageData'],
-        latitudeData: map['latitudeData'],
-        longitudeData: map['longitudeData'],
+        latitude: map['latitude'],
+        longitude: map['longitude'],
         userId: map['userId'],
       );
 
@@ -57,8 +57,8 @@ class Bicycle {
         "bicycleSize": bicycleSize,
         "bicycleModel": bicycleModel,
         "imageData": imageData,
-        "latitudeData": latitudeData,
-        "longitudeData": longitudeData,
+        "latitude": latitude,
+        "longitude": longitude,
         "userId": userId,
       };
 }
