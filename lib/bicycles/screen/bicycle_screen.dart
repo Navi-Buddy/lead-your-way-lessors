@@ -49,9 +49,16 @@ class _BicyclesScreenState extends State<BicyclesScreen> {
                 bicycles: _bicycles!,
                 scrollController: scrollController,
               )
-            :  Center(
-                child: Image.asset('assets/crying_image.gif')
-              ),
+            : Center(
+                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/crying_image.gif'),
+                  const SizedBox(height: 20),
+                  const Text('No tienes bicicletas registradas'),
+                ],
+              )),
       ),
     );
   }
