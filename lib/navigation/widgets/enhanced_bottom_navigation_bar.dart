@@ -43,7 +43,7 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
             tabs: const [
               GButton(
                 icon: Icons.directions_bike_outlined,
-                text: "Find bikes",
+                text: "My bikes",
               ),
               GButton(
                 icon: Icons.add,

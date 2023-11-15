@@ -15,12 +15,14 @@ class BicycleServiceImpl extends BicycleService {
         );
 
   @override
-  Future<List<Bicycle>?> getBicycles() async {
+  Future<List<Bicycle>?> getBicycles(int id) async {
+    final response = await dio.get('api/cyclescape/v1/users/${id.toString()}');
+    final List<dynamic> bicycleList = response.data['bicycles'];
+
+    final bicycles = bicycleList
+        .map((bicycleJson) => Bicycle.fromJson(bicycleJson))
+        .toList();
     try {
-      final response = await dio.get('api/cyclescape/v1/bicycles');
-      final bicycles = (response.data as List)
-          .map((bicycle) => Bicycle.fromJson(bicycle))
-          .toList();
       return bicycles;
     } catch (e) {
       return null;

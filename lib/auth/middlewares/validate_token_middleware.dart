@@ -3,6 +3,7 @@ import 'package:lyw_lessors/shared/services/local_storage_service_impl.dart';
 
 class ValidateTokenMiddleware {
   static String tokenKeyName = "lyw-jwt-key-name";
+  static String userIdKeyName = "lyw-user-id-key-name";
   late final LocalStorageService localStorageService;
 
   ValidateTokenMiddleware() {
@@ -10,6 +11,6 @@ class ValidateTokenMiddleware {
   }
 
   storageHasValidToken() async {
-     return (await localStorageService.retrieve<String>(tokenKeyName)) != null;
+    return (await localStorageService.retrieve<String>(tokenKeyName)) != null;
   }
 }

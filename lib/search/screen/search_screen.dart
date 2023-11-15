@@ -27,9 +27,11 @@ class _SearchScreenState extends State<SearchScreen> {
   void getBicycles() async {
     String? accessToken = await LocalStorageServiceImpl()
         .retrieve<String>(ValidateTokenMiddleware.tokenKeyName);
-    if (accessToken != null) {
+    int? userId = await LocalStorageServiceImpl()
+        .retrieve<int>(ValidateTokenMiddleware.userIdKeyName);
+    if (accessToken != null && userId != null) {
       bicycleService = BicycleServiceImpl(accessToken: accessToken);
-      final bicycles = await bicycleService.getBicycles();
+      final bicycles = await bicycleService.getBicycles(userId);
       setState(() {
         _bicycles = bicycles;
       });

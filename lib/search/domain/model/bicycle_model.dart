@@ -8,7 +8,6 @@ class Bicycle {
   final String imageData;
   final double latitude;
   final double longitude;
-  final int userId;
 
   Bicycle({
     required this.id,
@@ -20,7 +19,6 @@ class Bicycle {
     required this.imageData,
     required this.latitude,
     required this.longitude,
-    required this.userId,
   });
 
   factory Bicycle.fromJson(Map<String, dynamic> json) => Bicycle(
@@ -31,9 +29,20 @@ class Bicycle {
         bicycleSize: json["bicycleSize"],
         bicycleModel: json["bicycleModel"],
         imageData: json["imageData"],
-        latitude: json["latitude"],
-        longitude: json["longitude"],
-        userId: json["user"]["id"],
+        latitude: json["latitudeData"],
+        longitude: json["longitudeData"],
+      );
+
+  factory Bicycle.fromJsonUser(Map<String, dynamic> json) => Bicycle(
+        id: json["bicycles"]["id"],
+        bicycleName: json["bicycles"]["bicycleName"],
+        bicycleDescription: json["bicycles"]["bicycleDescription"],
+        bicyclePrice: json["bicycles"]["bicyclePrice"],
+        bicycleSize: json["bicycles"]["bicycleSize"],
+        bicycleModel: json["bicycles"]["bicycleModel"],
+        imageData: json["bicycles"]["imageData"],
+        latitude: json["bicycles"]["latitude"],
+        longitude: json["bicycles"]["longitude"],
       );
 
   factory Bicycle.fromMap(Map<String, dynamic> map) => Bicycle(
@@ -46,7 +55,6 @@ class Bicycle {
         imageData: map['imageData'],
         latitude: map['latitude'],
         longitude: map['longitude'],
-        userId: map['userId'],
       );
 
   Map<String, dynamic> toMap() => {
@@ -59,6 +67,5 @@ class Bicycle {
         "imageData": imageData,
         "latitude": latitude,
         "longitude": longitude,
-        "userId": userId,
       };
 }
