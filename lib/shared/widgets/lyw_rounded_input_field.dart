@@ -6,17 +6,19 @@ const Color inputColor = Colors.black;
 class LywRoundedInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
+  final Text? label;
   final String hintText;
   final Icon icon;
   final TextEditingController controller;
 
   const LywRoundedInputField(
       {super.key,
-        required this.keyboardType,
-        required this.textInputAction,
-        required this.hintText,
-        required this.icon,
-        required this.controller});
+      this.label,
+      required this.keyboardType,
+      required this.textInputAction,
+      required this.hintText,
+      required this.icon,
+      required this.controller});
 
   @override
   State<LywRoundedInputField> createState() => _LywRoundedInputFieldState();
@@ -31,6 +33,7 @@ class _LywRoundedInputFieldState extends State<LywRoundedInputField> {
         textInputAction: widget.textInputAction,
         cursorColor: inputColor,
         decoration: InputDecoration(
+          label: widget.label,
           hintText: widget.hintText,
           hintStyle: const TextStyle(color: inputColor),
           icon: Icon(
