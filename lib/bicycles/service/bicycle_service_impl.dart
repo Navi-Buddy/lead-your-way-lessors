@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lyw_lessors/configuration/constants/environment.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
-import 'package:lyw_lessors/search/domain/service/bicycle_service.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/domain/service/bicycle_service.dart';
 
 class BicycleServiceImpl extends BicycleService {
   final Dio dio;
@@ -15,12 +15,14 @@ class BicycleServiceImpl extends BicycleService {
         );
 
   @override
-  Future<List<Bicycle>?> getBicycles() async {
+  Future<List<Bicycle>?> getBicycles(int id) async {
+    final response = await dio.get('api/cyclescape/v1/users/${id.toString()}');
+    final List<dynamic> bicycleList = response.data['bicycles'];
+
+    final bicycles = bicycleList
+        .map((bicycleJson) => Bicycle.fromJson(bicycleJson))
+        .toList();
     try {
-      final response = await dio.get('api/cyclescape/v1/bicycles');
-      final bicycles = (response.data as List)
-          .map((bicycle) => Bicycle.fromJson(bicycle))
-          .toList();
       return bicycles;
     } catch (e) {
       return null;

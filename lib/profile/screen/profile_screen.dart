@@ -28,13 +28,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _logout() {
-    localStorageService.remove(ValidateTokenMiddleware.tokenKeyName);
-    smoothTransition(
-      context,
-      widget,
-      const OnBoardingScreen(),
-    );
+  void _logout() async {
+    await localStorageService.remove(ValidateTokenMiddleware.tokenKeyName);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      smoothTransition(
+        context,
+        widget,
+        const OnBoardingScreen(),
+      );
+    });
   }
 
   @override

@@ -25,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void onSubmit(LoginFormData data) async {
     sendNotifyMessage(context, 'Validating credentials.');
-    LoginResponse? response = await authService.login(data.email, data.password);
+    LoginResponse? response =
+        await authService.login(data.email, data.password);
 
     if (!context.mounted) return;
 
@@ -34,7 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    localStorageService.persist(ValidateTokenMiddleware.tokenKeyName, response.token);
+    localStorageService.persist(
+        ValidateTokenMiddleware.tokenKeyName, response.token);
+    localStorageService.persist(
+        ValidateTokenMiddleware.userIdKeyName, response.id);
 
     smoothTransition(
       context,

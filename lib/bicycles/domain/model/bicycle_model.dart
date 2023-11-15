@@ -6,9 +6,8 @@ class Bicycle {
   final String bicycleSize;
   final String bicycleModel;
   final String imageData;
-  final double latitudeData;
-  final double longitudeData;
-  final int userId;
+  final double latitude;
+  final double longitude;
 
   Bicycle({
     required this.id,
@@ -18,9 +17,8 @@ class Bicycle {
     required this.bicycleSize,
     required this.bicycleModel,
     required this.imageData,
-    required this.latitudeData,
-    required this.longitudeData,
-    required this.userId,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory Bicycle.fromJson(Map<String, dynamic> json) => Bicycle(
@@ -31,9 +29,20 @@ class Bicycle {
         bicycleSize: json["bicycleSize"],
         bicycleModel: json["bicycleModel"],
         imageData: json["imageData"],
-        latitudeData: json["latitudeData"],
-        longitudeData: json["longitudeData"],
-        userId: json["user"]["id"],
+        latitude: json["latitudeData"],
+        longitude: json["longitudeData"],
+      );
+
+  factory Bicycle.fromJsonUser(Map<String, dynamic> json) => Bicycle(
+        id: json["bicycles"]["id"],
+        bicycleName: json["bicycles"]["bicycleName"],
+        bicycleDescription: json["bicycles"]["bicycleDescription"],
+        bicyclePrice: json["bicycles"]["bicyclePrice"],
+        bicycleSize: json["bicycles"]["bicycleSize"],
+        bicycleModel: json["bicycles"]["bicycleModel"],
+        imageData: json["bicycles"]["imageData"],
+        latitude: json["bicycles"]["latitude"],
+        longitude: json["bicycles"]["longitude"],
       );
 
   factory Bicycle.fromMap(Map<String, dynamic> map) => Bicycle(
@@ -44,9 +53,8 @@ class Bicycle {
         bicycleSize: map['bicycleSize'],
         bicycleModel: map['bicycleModel'],
         imageData: map['imageData'],
-        latitudeData: map['latitudeData'],
-        longitudeData: map['longitudeData'],
-        userId: map['userId'],
+        latitude: map['latitude'],
+        longitude: map['longitude'],
       );
 
   Map<String, dynamic> toMap() => {
@@ -57,8 +65,7 @@ class Bicycle {
         "bicycleSize": bicycleSize,
         "bicycleModel": bicycleModel,
         "imageData": imageData,
-        "latitudeData": latitudeData,
-        "longitudeData": longitudeData,
-        "userId": userId,
+        "latitude": latitude,
+        "longitude": longitude,
       };
 }
