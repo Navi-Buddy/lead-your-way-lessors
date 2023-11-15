@@ -14,7 +14,7 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
       case 0:
         destination = AppRoute.home;
       case 1:
-        destination = AppRoute.characterSearch;
+        destination = AppRoute.addBike;
       case 2:
         destination = AppRoute.profile;
       default:

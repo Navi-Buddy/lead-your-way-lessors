@@ -3,7 +3,7 @@ enum AppRoute {
   register,
   notFound,
   home,
-  characterSearch,
-  favoriteCharacters,
+  myBikes,
+  addBike,
   profile,
 }
