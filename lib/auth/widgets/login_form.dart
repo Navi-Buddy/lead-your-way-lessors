@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/auth/domain/models/LoginFormData.dart';
 import 'package:lyw_lessors/shared/services/notifier.dart';
+import 'package:lyw_lessors/shared/utils/validations.dart';
 import 'package:lyw_lessors/shared/widgets/lyw_rounded_input_field.dart';
 
 class LoginForm extends StatefulWidget {
@@ -23,9 +24,7 @@ class _LoginFormState extends State<LoginForm> {
     super.dispose();
   }
 
-  bool isValidEmail(String email) {
-    return email.contains("@") && email.contains(".");
-  }
+  final Validations validations = Validations();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
               return;
             }
 
-            if (!isValidEmail(email)) {
+            if (!validations.isValidEmail(email)) {
               sendNotifyMessage(context, "Please enter a valid email address.");
               return;
             }
