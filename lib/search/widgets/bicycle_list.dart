@@ -14,25 +14,31 @@ class BicycleList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.87,
           mainAxisSpacing: 10,
-          crossAxisSpacing: 10),
-      itemCount: bicycles.length,
-      controller: scrollController,
-      itemBuilder: (context, index) {
-        if (index < bicycles.length) {
-          final bike = bicycles[index];
-          return BicycleCard(bike: bike);
-        } else {
-          return const Center(
+          crossAxisSpacing: 10,
+          mainAxisExtent: 200.0,
+        ),
+        itemCount: bicycles.length,
+        controller: scrollController,
+        itemBuilder: (context, index) {
+          if (index < bicycles.length) {
+            final bike = bicycles[index];
+            return BicycleCard(bike: bike);
+          } else {
+            return const Center(
               child: CircularProgressIndicator(
-            color: Colors.orangeAccent,
-          ));
-        }
-      },
+                color: Colors.orangeAccent,
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
