@@ -49,10 +49,8 @@ class _BicyclesScreenState extends State<BicyclesScreen> {
                 bicycles: _bicycles!,
                 scrollController: scrollController,
               )
-            : const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.orangeAccent,
-                ),
+            :  Center(
+                child: Image.asset('assets/crying_image.gif')
               ),
       ),
     );
