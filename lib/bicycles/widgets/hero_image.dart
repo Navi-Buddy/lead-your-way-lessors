@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
 
 class HeroImage extends StatelessWidget {
   const HeroImage({

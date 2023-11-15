@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
-import 'package:lyw_lessors/search/widgets/bicycle_card.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/widgets/bicycle_card.dart';
 
 class BicycleList extends StatelessWidget {
   const BicycleList({

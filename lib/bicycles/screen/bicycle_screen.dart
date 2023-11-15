@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/auth/middlewares/validate_token_middleware.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
-import 'package:lyw_lessors/search/domain/service/bicycle_service.dart';
-import 'package:lyw_lessors/search/service/bicycle_service_impl.dart';
-import 'package:lyw_lessors/search/widgets/bicycle_list.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/domain/service/bicycle_service.dart';
+import 'package:lyw_lessors/bicycles/service/bicycle_service_impl.dart';
+import 'package:lyw_lessors/bicycles/widgets/bicycle_list.dart';
 import 'package:lyw_lessors/shared/services/local_storage_service_impl.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class BicyclesScreen extends StatefulWidget {
+  const BicyclesScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<BicyclesScreen> createState() => _BicyclesScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _BicyclesScreenState extends State<BicyclesScreen> {
   final scrollController = ScrollController();
   late BicycleService bicycleService;
   List<Bicycle>? _bicycles;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
-import 'package:lyw_lessors/search/widgets/bicycle_info.dart';
-import 'package:lyw_lessors/search/widgets/hero_image.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/widgets/bicycle_info.dart';
+import 'package:lyw_lessors/bicycles/widgets/hero_image.dart';
 
 class BicycleCard extends StatelessWidget {
   const BicycleCard({

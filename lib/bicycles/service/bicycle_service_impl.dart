@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lyw_lessors/configuration/constants/environment.dart';
-import 'package:lyw_lessors/search/domain/model/bicycle_model.dart';
-import 'package:lyw_lessors/search/domain/service/bicycle_service.dart';
+import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/domain/service/bicycle_service.dart';
 
 class BicycleServiceImpl extends BicycleService {
   final Dio dio;
