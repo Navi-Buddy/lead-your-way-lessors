@@ -20,7 +20,8 @@ class LocalStorageServiceImpl extends LocalStorageService {
         preferences!.setString(key, value as String);
         break;
       default:
-        throw UnimplementedError("Persist isn't implemented for type ${T.runtimeType}");
+        throw UnimplementedError(
+            "Persist isn't implemented for type ${T.runtimeType}");
     }
   }
 
@@ -40,8 +41,8 @@ class LocalStorageServiceImpl extends LocalStorageService {
       case String:
         return preferences!.getString(key) as T?;
       default:
-        throw UnimplementedError("Retrieve isn't implemented for type ${T.runtimeType}");
+        throw UnimplementedError(
+            "Retrieve isn't implemented for type ${T.runtimeType}");
     }
   }
-    
 }
