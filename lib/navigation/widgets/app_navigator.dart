@@ -14,7 +14,7 @@ class AppNavigator extends StatefulWidget {
 }
 
 class _AppNavigatorState extends State<AppNavigator> {
-  Widget view = const RouteNotFoundScreen();
+  Widget view = const BicyclesScreen();
 
   void navigateTo(AppRoute route) {
     setState(() {
