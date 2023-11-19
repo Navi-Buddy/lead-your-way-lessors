@@ -3,6 +3,7 @@ import 'package:lyw_lessors/auth/middlewares/validate_token_middleware.dart';
 import 'package:lyw_lessors/onboarding/screens/on_boarding_screen.dart';
 import 'package:lyw_lessors/profile/domain/model/user_model.dart';
 import 'package:lyw_lessors/profile/domain/service/user_service.dart';
+import 'package:lyw_lessors/profile/screen/edit_profile_screen.dart';
 import 'package:lyw_lessors/profile/services/user_service_impl.dart';
 import 'package:lyw_lessors/profile/widgets/logout_alert.dart';
 import 'package:lyw_lessors/profile/widgets/profile_picture.dart';
@@ -52,7 +53,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _logout() async {
-    await LocalStorageServiceImpl().remove(ValidateTokenMiddleware.tokenKeyName);
+    await LocalStorageServiceImpl()
+        .remove(ValidateTokenMiddleware.tokenKeyName);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       smoothTransition(
         context,
@@ -73,11 +75,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 const Padding(padding: EdgeInsets.all(15.0)),
                 ProfilePicture(
-                  imagePath:
-                      _user?.imageData != null
-                      ? _user!.imageData 
+                  imagePath: _user?.imageData != null
+                      ? _user!.imageData
                       : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
-                  onClick: () async {},
+                  onClick: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfileScreen(user: _user!),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 buildName(),
@@ -105,9 +113,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 4),
           Text(
-            _user != null 
-            ? "${_user!.userEmail} | ${_user?.userPhone != null ? _user!.userPhone : "No phone number"}"
-            : "Loading...",
+            _user != null
+                ? "${_user!.userEmail} | ${_user?.userPhone != null ? _user!.userPhone : "No phone number"}"
+                : "Loading...",
             style: const TextStyle(color: Colors.grey),
           )
         ],
