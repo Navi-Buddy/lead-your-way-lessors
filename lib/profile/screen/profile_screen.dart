@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/auth/middlewares/validate_token_middleware.dart';
 import 'package:lyw_lessors/onboarding/screens/on_boarding_screen.dart';
+import 'package:lyw_lessors/profile/domain/model/user_model.dart';
+import 'package:lyw_lessors/profile/domain/service/user_service.dart';
+import 'package:lyw_lessors/profile/screen/edit_profile_screen.dart';
+import 'package:lyw_lessors/profile/services/user_service_impl.dart';
 import 'package:lyw_lessors/profile/widgets/logout_alert.dart';
 import 'package:lyw_lessors/profile/widgets/profile_picture.dart';
-import 'package:lyw_lessors/shared/domain/services/local_storage_service.dart';
 import 'package:lyw_lessors/shared/services/local_storage_service_impl.dart';
 import 'package:lyw_lessors/shared/services/smooth_transition_service.dart';
 
@@ -15,7 +18,28 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final LocalStorageService localStorageService = LocalStorageServiceImpl();
+  late UserService userService;
+  User? _user;
+
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
+
+  void getUser() async {
+    String? accessToken = await LocalStorageServiceImpl()
+        .retrieve<String>(ValidateTokenMiddleware.tokenKeyName);
+    int? userId = await LocalStorageServiceImpl()
+        .retrieve<int>(ValidateTokenMiddleware.userIdKeyName);
+    if (accessToken != null && userId != null) {
+      userService = UserServiceImpl(accessToken: accessToken);
+      final user = await userService.getUserById(userId);
+      setState(() {
+        _user = user;
+      });
+    } else {}
+  }
 
   Future<void> _confirmLogout() async {
     return showDialog(
@@ -29,7 +53,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _logout() async {
-    await localStorageService.remove(ValidateTokenMiddleware.tokenKeyName);
+    await LocalStorageServiceImpl()
+        .remove(ValidateTokenMiddleware.tokenKeyName);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       smoothTransition(
         context,
@@ -50,9 +75,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 const Padding(padding: EdgeInsets.all(15.0)),
                 ProfilePicture(
-                  imagePath:
-                      "https://miro.medium.com/v2/resize:fit:785/0*Ggt-XwliwAO6QURi.jpg",
-                  onClick: () async {},
+                  imagePath: _user?.imageData != null
+                      ? _user!.imageData
+                      : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+                  onClick: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfileScreen(user: _user!),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 buildName(),
@@ -70,16 +103,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget buildName() => const Column(
+  Widget buildName() => Column(
         children: [
           Text(
-            "Juan Perez",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            _user != null
+                ? "${_user!.userFirstName} ${_user!.userLastName}"
+                : "Loading...",
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
-            "example@example.com",
-            style: TextStyle(color: Colors.grey),
+            _user != null
+                ? "${_user!.userEmail} | ${_user?.userPhone != null ? _user!.userPhone : "No phone number"}"
+                : "Loading...",
+            style: const TextStyle(color: Colors.grey),
           )
         ],
       );

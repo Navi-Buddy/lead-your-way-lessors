@@ -14,4 +14,8 @@ class Validations {
   bool isValidImage(String image) {
     return image.contains("http") && image.contains(".jpg");
   }
+
+  bool isValidNumber(String number) {
+    return number.length == 9;
+  }
 }
