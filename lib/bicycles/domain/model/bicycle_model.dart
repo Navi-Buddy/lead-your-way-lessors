@@ -29,8 +29,8 @@ class Bicycle {
         bicycleSize: json["bicycleSize"],
         bicycleModel: json["bicycleModel"],
         imageData: json["imageData"],
-        latitude: json["latitudeData"],
-        longitude: json["longitudeData"],
+        latitude: json["latitudeData"] ?? 0.0,
+        longitude: json["longitudeData"] ?? 0.0,
       );
 
   factory Bicycle.fromJsonUser(Map<String, dynamic> json) => Bicycle(
