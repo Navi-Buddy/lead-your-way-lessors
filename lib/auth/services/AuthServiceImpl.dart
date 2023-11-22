@@ -17,8 +17,7 @@ class AuthServiceImpl extends AuthService {
           data: {'userEmail': email, 'userPassword': password});
       final userResponse = LoginResponse.fromJson(response.data);
       return userResponse;
-    }
-    catch (e) {
+    } catch (e) {
       return null;
     }
   }

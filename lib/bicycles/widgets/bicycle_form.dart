@@ -108,9 +108,17 @@ class _BicycleFormState extends State<BicycleForm> {
                 sendNotifyMessage(context, "Please enter a valid image link.");
                 return;
               }
-              
-              widget.onSubmit(Bicycle(id: 1, bicycleName: name, bicycleDescription: description, bicyclePrice: double.parse(price), bicycleSize: size, bicycleModel: model, imageData: image, latitude: 0, longitude: 0));
 
+              widget.onSubmit(Bicycle(
+                  id: 1,
+                  bicycleName: name,
+                  bicycleDescription: description,
+                  bicyclePrice: double.parse(price),
+                  bicycleSize: size,
+                  bicycleModel: model,
+                  imageData: image,
+                  latitude: 0,
+                  longitude: 0));
             },
             style: FilledButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 252, 150, 82),

@@ -26,14 +26,15 @@ class _AddBicycleScreenState extends State<AddBicycleScreen> {
     if (accessToken != null && userId != null) {
       bicycleService = BicycleServiceImpl(accessToken: accessToken);
       await bicycleService.addBicycle(userId, bicycle);
-    } else {
-      return;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("Create your bike"),
+        ),
         resizeToAvoidBottomInset: false,
         body: Padding(
           padding:
@@ -43,8 +44,11 @@ class _AddBicycleScreenState extends State<AddBicycleScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Create your bike',
-                      style: TextStyle(fontSize: 24)),
+                  Image.asset(
+                    "assets/bicycle.png",
+                    width: 100,
+                    height: 100,
+                  ),
                   const SizedBox(height: 32),
                   BicycleForm(onSubmit: onSubmit)
                 ],

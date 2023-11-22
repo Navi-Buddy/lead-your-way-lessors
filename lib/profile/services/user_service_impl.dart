@@ -9,7 +9,6 @@ class UserServiceImpl extends UserService {
   UserServiceImpl({required String accessToken})
       : dio = Dio(BaseOptions(
             baseUrl: Environment.apiUrl,
-            headers: {'Authorization': 'Bearer $accessToken'}));
 
   @override
   Future<User?> getUserById(int id) async {
