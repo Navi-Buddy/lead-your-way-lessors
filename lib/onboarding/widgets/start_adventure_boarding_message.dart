@@ -19,7 +19,7 @@ class _StartAdventureBoardingMessageState extends State<StartAdventureBoardingMe
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Start your new",
+            "Start earning some",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class _StartAdventureBoardingMessageState extends State<StartAdventureBoardingMe
             ),
           ),
           const Text(
-            "adventure",
+            "money",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontWeight: FontWeight.bold,

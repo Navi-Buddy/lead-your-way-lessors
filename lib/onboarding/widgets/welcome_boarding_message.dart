@@ -27,7 +27,7 @@ class _WelcomeBoardingMessageState extends State<WelcomeBoardingMessage> {
             ),
           ),
           const Text(
-            "Lead Your Way",
+            "Lead Your Way Lessors",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class _WelcomeBoardingMessageState extends State<WelcomeBoardingMessage> {
           ),
           image,
           const Text(
-            "Your go-to bike rental app for a convenient, efficient, and enjoyable cycling experience.",
+            "Your application to manage your rental bicycles",
             textAlign: TextAlign.center,
           )
         ],

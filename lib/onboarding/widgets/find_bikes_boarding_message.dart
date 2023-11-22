@@ -18,18 +18,17 @@ class _FindBikesBoardingMessageState extends State<FindBikesBoardingMessage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Row(
+          const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Find bikes",
+                "Visualize your bikes",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 32
                 ),
               ),
-              SizedBox(width: 8,),
               Text(
                 "easily",
                 textAlign: TextAlign.center,
@@ -43,7 +42,7 @@ class _FindBikesBoardingMessageState extends State<FindBikesBoardingMessage> {
           ),
           image,
           const Text(
-            "Find the right bike for your needs",
+            "Find all available information about your bike",
             textAlign: TextAlign.center,
           )
         ],
