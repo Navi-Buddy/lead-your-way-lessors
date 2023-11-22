@@ -7,8 +7,7 @@ class UserServiceImpl extends UserService {
   final Dio dio;
 
   UserServiceImpl({required String accessToken})
-      : dio = Dio(BaseOptions(
-            baseUrl: Environment.apiUrl,
+      : dio = Dio(BaseOptions(baseUrl: Environment.apiUrl));
 
   @override
   Future<User?> getUserById(int id) async {
@@ -25,14 +24,14 @@ class UserServiceImpl extends UserService {
   @override
   Future putUserById(int id, User user) {
     try {
-      final response = dio.put('api/cyclescape/v1/users/${id.toString()}',
-          data: {
-            'userFirstName': user.userFirstName,
-            'userLastName': user.userLastName,
-            'userEmail': user.userEmail,
-            'userPhone': user.userPhone,
-            'imageData': user.imageData,
-          });
+      final response =
+          dio.put('api/cyclescape/v1/users/${id.toString()}', data: {
+        'userFirstName': user.userFirstName,
+        'userLastName': user.userLastName,
+        'userEmail': user.userEmail,
+        'userPhone': user.userPhone,
+        'imageData': user.imageData,
+      });
       return response;
     } catch (e) {
       rethrow;
