@@ -48,7 +48,7 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
                 text: "My bikes",
               ),
               GButton(
-                icon: Icons.directions_bike_outlined,
+                icon: Icons.monetization_on,
                 text: "My rented bikes",
               ),
               GButton(
