@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/bicycles/screen/add_bicycle_screen.dart';
+import 'package:lyw_lessors/bicycles/screen/bicycle_rented_screen.dart';
 import 'package:lyw_lessors/navigation/domain/models/enumeration/app_route.dart';
 import 'package:lyw_lessors/navigation/widgets/enhanced_bottom_navigation_bar.dart';
 import 'package:lyw_lessors/profile/screen/profile_screen.dart';
@@ -27,6 +28,9 @@ class _AppNavigatorState extends State<AppNavigator> {
           break;
         case AppRoute.profile:
           view = const ProfileScreen();
+          break;
+        case AppRoute.myRentedBikes:
+          view = const BicyclesScreenRent();
           break;
         default:
           view = const RouteNotFoundScreen();

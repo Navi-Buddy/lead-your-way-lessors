@@ -4,6 +4,7 @@ enum AppRoute {
   notFound,
   home,
   myBikes,
+  myRentedBikes,
   addBike,
   profile,
 }
