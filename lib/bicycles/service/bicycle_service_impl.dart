@@ -57,4 +57,21 @@ class BicycleServiceImpl extends BicycleService {
     }
     return 'An error has occured';
   }
+
+  @override
+  Future<List<Bicycle>?> getBicyclesByUserId(int id) async {
+    try {
+      final response = await dio
+          .get('api/cyclescape/v1/rents/bicycle/user/${id.toString()}');
+      final List<dynamic> bicycleList = response.data;
+
+      final bicycles = bicycleList
+          .map((bicycleJson) => Bicycle.fromJson(bicycleJson))
+          .toList();
+
+      return bicycles;
+    } catch (e) {
+      return null;
+    }
+  }
 }
