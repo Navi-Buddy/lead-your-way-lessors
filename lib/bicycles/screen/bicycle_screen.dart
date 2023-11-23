@@ -44,7 +44,7 @@ class _BicyclesScreenState extends State<BicyclesScreen> {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: _bicycles != null
+        child: _bicycles != null && _bicycles!.isNotEmpty
             ? BicycleList(
                 bicycles: _bicycles!,
                 scrollController: scrollController,
