@@ -17,8 +17,27 @@ class AuthServiceImpl extends AuthService {
           data: {'userEmail': email, 'userPassword': password});
       final userResponse = LoginResponse.fromJson(response.data);
       return userResponse;
+    } catch (e) {
+      return null;
     }
-    catch (e) {
+  }
+
+  @override
+  Future<LoginResponse?> signUp(String email, String password) async {
+    final signUpData = {
+      'userEmail': email,
+      'userPassword': password,
+      'userFirstName': 'John',
+      'userLastName': 'Doe',
+      'userBirthDate': '1990-01-01',
+    };
+
+    try {
+      final response =
+          await dio.post('api/cyclescape/v1/auth/register', data: signUpData);
+      final userResponse = LoginResponse.fromJson(response.data);
+      return userResponse;
+    } catch (e) {
       return null;
     }
   }
