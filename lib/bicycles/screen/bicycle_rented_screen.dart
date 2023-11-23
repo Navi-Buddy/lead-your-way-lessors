@@ -6,14 +6,14 @@ import 'package:lyw_lessors/bicycles/service/bicycle_service_impl.dart';
 import 'package:lyw_lessors/bicycles/widgets/bicycle_list.dart';
 import 'package:lyw_lessors/shared/services/local_storage_service_impl.dart';
 
-class BicyclesScreen extends StatefulWidget {
-  const BicyclesScreen({super.key});
+class BicyclesScreenRent extends StatefulWidget {
+  const BicyclesScreenRent({super.key});
 
   @override
-  State<BicyclesScreen> createState() => _BicyclesScreenState();
+  State<BicyclesScreenRent> createState() => _BicyclesScreenRentState();
 }
 
-class _BicyclesScreenState extends State<BicyclesScreen> {
+class _BicyclesScreenRentState extends State<BicyclesScreenRent> {
   final scrollController = ScrollController();
   late BicycleService bicycleService;
   List<Bicycle>? _bicycles;
@@ -31,7 +31,7 @@ class _BicyclesScreenState extends State<BicyclesScreen> {
         .retrieve<int>(ValidateTokenMiddleware.userIdKeyName);
     if (accessToken != null && userId != null) {
       bicycleService = BicycleServiceImpl(accessToken: accessToken);
-      final bicycles = await bicycleService.getBicycles(userId);
+      final bicycles = await bicycleService.getBicyclesByUserId(userId);
       setState(() {
         _bicycles = bicycles;
       });
@@ -56,7 +56,7 @@ class _BicyclesScreenState extends State<BicyclesScreen> {
                   children: [
                     Image.asset('assets/crying_image.gif'),
                     const SizedBox(height: 20),
-                    const Text('No tienes bicicletas registradas'),
+                    const Text('Nadie te quiere alquilar tus bicis'),
                   ],
                 ),
               ),

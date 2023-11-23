@@ -14,8 +14,10 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
       case 0:
         destination = AppRoute.home;
       case 1:
-        destination = AppRoute.addBike;
+        destination = AppRoute.myRentedBikes;
       case 2:
+        destination = AppRoute.addBike;
+      case 3:
         destination = AppRoute.profile;
       default:
         destination = AppRoute.notFound;
@@ -44,6 +46,10 @@ class EnhancedBottomNavigationBar extends StatelessWidget {
               GButton(
                 icon: Icons.directions_bike_outlined,
                 text: "My bikes",
+              ),
+              GButton(
+                icon: Icons.directions_bike_outlined,
+                text: "My rented bikes",
               ),
               GButton(
                 icon: Icons.add,
