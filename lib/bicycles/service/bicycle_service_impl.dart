@@ -12,7 +12,7 @@ class BicycleServiceImpl extends BicycleService {
       : dio = Dio(
           BaseOptions(
             baseUrl: Environment.apiUrl,
-            headers: {'Authorization': 'Bearer $accessToken'},
+            //headers: {'Authorization': 'Bearer $accessToken'},
           ),
         );
 

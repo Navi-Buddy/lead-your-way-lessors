@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lyw_lessors/bicycles/domain/model/bicycle_model.dart';
+import 'package:lyw_lessors/bicycles/screen/bicycle_detail.dart';
 import 'package:lyw_lessors/bicycles/widgets/bicycle_info.dart';
 import 'package:lyw_lessors/bicycles/widgets/hero_image.dart';
 
@@ -14,7 +15,10 @@ class BicycleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BicycleDetail(bicycle: bike)));
+      },
       child: Card(
         color: Colors.white,
         child: Column(
